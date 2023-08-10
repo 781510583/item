@@ -19,6 +19,7 @@
               placeholder="请输入密码"
               maxlength="15"
               minlength="6"
+              @keyup.native.enter="loginFn"
             ></el-input>
           </el-form-item>
           <el-form-item>
@@ -62,9 +63,10 @@ export default {
         if (res.data.code !== 0) return this.$message.error(res.data.message)
         this.$message.success(res.data.message)
         this.updateToken(res.data.token)
+        console.log(res.data.token);
         this.$router.push('/home')
       })
-    }
+    },
   }
 };
 </script>
